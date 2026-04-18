@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -61,21 +62,24 @@ dependencies {
 
     // Retrofit
     implementation(libs.retrofit)
-    implementation(libs.converter.gson)
     implementation(libs.okhttp3.logging.interceptor)
 
+    // Official Kotlinx Serialization Converter
+    implementation(libs.converter.kotlinx.serialization)
+    // Core Kotlinx Serialization library
+    implementation(libs.kotlinx.serialization.json)
 
-// Hilt
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
-// ViewModel
+    // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
 
-// Coroutines
+    // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
 }
